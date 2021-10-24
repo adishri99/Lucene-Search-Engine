@@ -56,11 +56,13 @@ public class Index {
             Analyzer simpleAnalyzer = new SimpleAnalyzer();
             Analyzer whitespaceAnalyzer = new WhitespaceAnalyzer();
             Analyzer englishAnalyzer = new EnglishAnalyzer();
-            Analyzer customAnalyzer = CustomAnalyzer.builder().withTokenizer("standard").addTokenFilter("lowercase")
+            Analyzer buildCustomAnalyzer = CustomAnalyzer.builder().withTokenizer("standard").addTokenFilter("lowercase")
                     .addTokenFilter("stop").addTokenFilter("porterstem").addTokenFilter("capitalization").build();
+            Analyzer analyzer = englishAnalyzer;
 
             Directory indexDirectory = FSDirectory.open(Paths.get(indicesPATH));
-            IndexWriterConfig indexWriterConf = new IndexWriterConfig(englishAnalyzer);
+            IndexWriterConfig indexWriterConf = new IndexWriterConfig(analyzer);
+
             indexWriterConf.setSimilarity(new BM25Similarity());
 
 //			TF-DF Classic Similarity

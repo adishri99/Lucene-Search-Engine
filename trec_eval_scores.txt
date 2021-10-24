@@ -1,0 +1,34 @@
+BM25	map	iprec_at_recall_0.50 
+englishAnalyzer.txt	0.4238	0.4337
+simpleAnalyzer.txt	0.382	0.3956
+StandardAnalyzer.txt	0.3756	0.3859
+whitespaceAnalyzer.txt	0.3455	0.3423
+customAnalyzer.txt	0.422	0.4314
+		
+TF-IDF Below		
+englishAnalyzer.txt	0.3743	0.3648
+simpleAnalyzer.txt	0.245	0.225
+StandardAnalyzer.txt	0.239	0.2261
+whitespaceAnalyzer.txt	0.2066	0.1978
+customAnalyzer.txt	0.3709	0.3604
+		
+Drichlet		
+englishAnalyzer.txt	0.3477	0.3547
+simpleAnalyzer.txt	0.3361	0.3351
+StandardAnalyzer.txt	0.3346	0.3363
+whitespaceAnalyzer.txt	0.3103	0.3049
+customAnalyzer.txt	0.3466	0.3531
+		
+LMJelinekMercerSimilarity		
+englishAnalyzer.txt	0.405	0.407
+simpleAnalyzer.txt	3606	0.3576
+StandardAnalyzer.txt	0.3522	0.3499
+whitespaceAnalyzer.txt	0.3236	0.3154
+customAnalyzer.txt	0.4034	0.4059
+		
+Multi Scoring Technique using BM25 & Drichlet Similarity Scoring		
+englishAnalyzer.txt	0.4208	0.4333
+simpleAnalyzer.txt	0.3876	0.4014
+StandardAnalyzer.txt	0.3828	0.395
+whitespaceAnalyzer.txt	0.353	0.3513
+customAnalyzer.txt	0.4192	0.4309

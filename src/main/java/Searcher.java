@@ -37,16 +37,16 @@ public class Searcher {
             IndexSearcher indexSearcher = new IndexSearcher(indexReader);
             BufferedReader br = Files.newBufferedReader(Paths.get(query_PATH), StandardCharsets.UTF_8);
 
-//			Using a analyzer for analyzing the queries
-//             Analyzer standardAnalyzer = new StandardAnalyzer();
-//            Analyzer simpleAnalyzer = new SimpleAnalyzer();
-//            Analyzer whitespaceAnalyzer = new WhitespaceAnalyzer();
-//            Analyzer customAnalyzer = CustomAnalyzer.builder().withTokenizer("standard").addTokenFilter("lowercase")
-//                    .addTokenFilter("stop").addTokenFilter("porterstem").addTokenFilter("capitalization").build();
+//			Using an analyzer for analyzing the queries
+             Analyzer standardAnalyzer = new StandardAnalyzer();
+            Analyzer simpleAnalyzer = new SimpleAnalyzer();
+            Analyzer whitespaceAnalyzer = new WhitespaceAnalyzer();
+            Analyzer buildCustomAnalyzer = CustomAnalyzer.builder().withTokenizer("standard").addTokenFilter("lowercase")
+                    .addTokenFilter("stop").addTokenFilter("porterstem").addTokenFilter("capitalization").build();
             Analyzer englishAnalyzer = new EnglishAnalyzer();
+            Analyzer analyzer = englishAnalyzer;
 
 //			Select a scoring method
-
             indexSearcher.setSimilarity(new BM25Similarity());
 
 //			TF-IDF Classic Similarity
@@ -65,10 +65,10 @@ public class Searcher {
 //            indexSearcher.setSimilarity(new MultiSimilarity(new Similarity[]{new LMJelinekMercerSimilarity((float) 0.7),new LMDirichletSimilarity()}));
 
 //          A Multi similarity model combining BM25Similarity and LMDirichletSimilarity
-//            indexSearcher.setSimilarity(new MultiSimilarity(new Similarity[]{new BM25Similarity(),new LMDirichletSimilarity()}));
+            indexSearcher.setSimilarity(new MultiSimilarity(new Similarity[]{new BM25Similarity(),new LMDirichletSimilarity()}));
 
             MultiFieldQueryParser queryParser = new MultiFieldQueryParser(
-                    new String[] { "title", "author", "bibliography", "contentSubstance" }, englishAnalyzer);
+                    new String[] { "title", "author", "bibliography", "contentSubstance" }, analyzer);
             String presentLine = br.readLine();
             String query_id = "";
             int iterator = 0;
