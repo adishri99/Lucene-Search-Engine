@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Lucene-Retreival-System" />
         <module name="ashrivasIRCA1" />
+        <module name="Lucene-Search-Engine" />
       </profile>
     </annotationProcessing>
   </component>

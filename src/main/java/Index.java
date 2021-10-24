@@ -61,11 +61,10 @@ public class Index {
 
             Directory indexDirectory = FSDirectory.open(Paths.get(indicesPATH));
             IndexWriterConfig indexWriterConf = new IndexWriterConfig(englishAnalyzer);
+            indexWriterConf.setSimilarity(new BM25Similarity());
 
 //			TF-DF Classic Similarity
 //			indexWriterConf.setSimilarity(new ClassicSimilarity());
-
-            indexWriterConf.setSimilarity(new BM25Similarity());
 
 //			Bayesian smoothing using Dirichlet priors.
 //			indexWriterConf.setSimilarity(new LMDirichletSimilarity());
@@ -152,7 +151,7 @@ public class Index {
 
                     /*
                      * We add the bibliography to the document by reading the text till we encounter
-                     * ".B"
+                     * ".W"
                      */
                     while (!presentLine.startsWith(".W")) {
                         completeText = completeText + presentLine + " ";

@@ -2,6 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <name>Lucene-Search-Engine</name>
+    <description>Information Retreival Continuous Assessment Part 1 done by Aditya Kumar Shrivastava, TCD ID 19323354. This project implements a retrieval system using Apache Lucene and the retreival engine is evaluated using trec eval</description>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.luceneIRAssignment1Ashrivas</groupId>

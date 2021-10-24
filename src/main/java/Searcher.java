@@ -20,7 +20,7 @@ import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
-import org.apache.lucene.search.similarities.BM25Similarity;
+import org.apache.lucene.search.similarities.*;
 import org.apache.lucene.store.FSDirectory;
 
 public class Searcher {
@@ -37,19 +37,19 @@ public class Searcher {
             IndexSearcher indexSearcher = new IndexSearcher(indexReader);
             BufferedReader br = Files.newBufferedReader(Paths.get(query_PATH), StandardCharsets.UTF_8);
 
-//			Select an analyzer
-            Analyzer standardAnalyzer = new StandardAnalyzer();
-            Analyzer simpleAnalyzer = new SimpleAnalyzer();
-            Analyzer whitespaceAnalyzer = new WhitespaceAnalyzer();
+//			Using a analyzer for analyzing the queries
+//             Analyzer standardAnalyzer = new StandardAnalyzer();
+//            Analyzer simpleAnalyzer = new SimpleAnalyzer();
+//            Analyzer whitespaceAnalyzer = new WhitespaceAnalyzer();
+//            Analyzer customAnalyzer = CustomAnalyzer.builder().withTokenizer("standard").addTokenFilter("lowercase")
+//                    .addTokenFilter("stop").addTokenFilter("porterstem").addTokenFilter("capitalization").build();
             Analyzer englishAnalyzer = new EnglishAnalyzer();
-            Analyzer customAnalyzer = CustomAnalyzer.builder().withTokenizer("standard").addTokenFilter("lowercase")
-                    .addTokenFilter("stop").addTokenFilter("porterstem").addTokenFilter("capitalization").build();
 
 //			Select a scoring method
 
             indexSearcher.setSimilarity(new BM25Similarity());
 
-//			TF-DF Classic Similarity
+//			TF-IDF Classic Similarity
 //			indexSearcher.setSimilarity(new ClassicSimilarity());
 
 //			Bayesian smoothing using Dirichlet priors.
