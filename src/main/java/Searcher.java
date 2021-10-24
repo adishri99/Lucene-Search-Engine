@@ -65,7 +65,7 @@ public class Searcher {
 //            indexSearcher.setSimilarity(new MultiSimilarity(new Similarity[]{new LMJelinekMercerSimilarity((float) 0.7),new LMDirichletSimilarity()}));
 
 //          A Multi similarity model combining BM25Similarity and LMDirichletSimilarity
-            indexSearcher.setSimilarity(new MultiSimilarity(new Similarity[]{new BM25Similarity(),new LMDirichletSimilarity()}));
+//            indexSearcher.setSimilarity(new MultiSimilarity(new Similarity[]{new BM25Similarity(),new LMDirichletSimilarity()}));
 
             MultiFieldQueryParser queryParser = new MultiFieldQueryParser(
                     new String[] { "title", "author", "bibliography", "contentSubstance" }, analyzer);
